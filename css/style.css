@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400&display=swap');
+
+:root{
+    /* Primary */
+    --color-Soft-Cyan :  hsl(174, 77%, 80%);
+    --color-Strong-Cyan :  hsl(174, 86%, 45%);
+    --color-Light-Grayish-Red :hsl(14, 92%, 95%) ;
+    --color-Light-Red :  hsl(15, 100%, 70%);
+    --color-Pale-Blue : hsl(226, 100%, 87%) ;
+
+    /* Neutral */
+    --color-White : hsl(0, 0%, 100%);
+    --color-Very-Pale-Blue : hsl(230, 100%, 99%);
+    --color-Light-Grayish-Blue :hsl(230, 100%, 99%) ;/*Empty Slider Bar*/
+    --color-Light-Grayish-Blue2 :  hsl(223, 50%, 87%); /*for toggle background*/
+    --color-Grayish-Blue :  hsl(225, 20%, 60%); /*for Text*/ 
+    --color-Dark-Desaturated-Blue :  hsl(227, 35%, 25%) ;/*(Text & CTA Background)*/
+    --font-size : 15px ;
+    
+}
+
+*{
+    padding : 0px ; 
+    margin : 0px ; 
+    box-sizing: border-box;
+}
+body , html {
+    width: 100%; 
+    height : 100vh ;
+    overflow-x: hidden;
+    
+}
+body{
+    font-family: 'Manrope', sans-serif;
+    font-size: var(--font-size);
+    background-color: var(--color-Very-Pale-Blue);
+    z-index: 5;
+}
+
+.home-page{
+    padding : 1.6em 1.5em ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.bg-svg{
+    position: absolute;
+    top : 0px ;
+    left: 0px ;
+    right : 0px;
+    z-index: 1;
+    width: 100%;
+    height: 60vh;
+}
+.home__header{
+    position: relative;
+    width : 100%;
+    padding : 2.6em 3.8em 4.3em; 
+    text-align : center;
+    word-wrap: break-word;
+    overflow: hidden;
+    z-index: 300;
+}
+.pattern-circle{
+    position: absolute;
+    width:90px;
+    height : 90px;
+    z-index: 1;
+    left : 40%;
+}
+.home__header .home__header-mainText {
+    font-size: 20px;
+}
+.home__header small{
+    color:var(--color-Grayish-Blue);
+    /* border : 1px solid red ; */
+}
+.home__content{
+    z-index: 300 ;
+}
+.home__content .price-card{
+    box-shadow: 0.4px 5px 10px 1px rgb(0 0 0 / 15%);
+    padding: 2em 0px;
+    border-radius: 6px;
+    background-color: var(--color-White);
+}
+.price-card__topPart {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1;
+    grid-template-rows: 4;
+    padding : 0px 1.7em;
+    row-gap: 1.3em;
+}
+
+.price-card__topPart small{
+    color:var(--color-Grayish-Blue);
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.price-card__topPart__price{
+    display:  flex ;
+    flex-direction: row;
+    justify-content: center;  
+    padding-bottom: 0.7;
+}
+
+.price-card__topPart__price  span h2{
+    display: inline;
+    font-size: 25px;
+    font-weight: 700;
+}
+.price-card__topPart__price  span span {
+    font-size: 12px;
+    color :var(--color-Grayish-Blue);
+}
+.price-card__topPart__check{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    font-size: 11px;
+    justify-content: center;
+    color :var(--color-Grayish-Blue);
+    padding: 1.3em 0px;  
+    margin-bottom: 1.3em;
+}
+.discount{
+    background-color: var(--color-Light-Grayish-Red);
+    padding : 0.3px 5px;
+    border-radius: 8px;
+    margin-left: 3px;
+}
+.lg-discount{
+    display: none;
+}
+.switch{
+    position: relative;
+    /* display: inline-block; */
+    width: 30px;
+    height: 17px;
+}
+input[type=checkbox] {
+    height: 0;
+	width: 0;
+	visibility: hidden;
+}
+.check-box{
+    --x : 30px ;
+    --c : 12px ;
+
+    position: relative;
+    margin : 0px 6px;
+    padding : 2px 5px ;
+    width: var(--x);
+    height: 16px;
+    border-radius: 8px;
+    background-color: var(--color-Light-Grayish-Blue2);
+    cursor: pointer;
+    -webkit-transition: .4s ease 0.4s ;
+    transition: .4s ease 0.4s ;
+}
+.check-box::after{
+    content: '';
+    position: absolute;
+    width: var(--c);
+    height: var(--c);
+    top:0px;
+    margin:2px;
+    left: 0px;
+    bottom: 4px;
+    z-index: 6;
+    border-radius: 50%;
+    background-color: var(--color-Very-Pale-Blue);
+    -webkit-transition: transform 0.5s ease 0.3s ;
+    transition: transform 0.3s ease 0.3s ;
+}
+.check-box.active::after{
+    -webkit-transform: translateX(15px);
+    -ms-transform: translateX(15px);
+    transform: translateX(15px);
+}
+input[type=checkbox]:checked + .check-box{
+    background: var(--color-Strong-Cyan);
+}
+input[type=checkbox]:checked + .check-box::after{
+    /* right : 0px; */
+    /* left : auto; */
+    -webkit-transform: translateX(15px);
+    -ms-transform: translateX(15px);
+    transform: translateX(15px);
+}
+.price-card__bottomPart{
+    border-top: 1px solid var(--color-Light-Grayish-Blue2);
+    padding : 1.4em 2em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.price-card__bottomPart__info{
+    display: flex;
+    flex-direction: column;
+}
+.price-card__bottomPart__info > * {
+    padding : 0.60em 0px ;
+    font-size: 11px;
+    color : var(--color-Grayish-Blue)
+}
+.check-svg{
+    margin-right : 5px;
+}
+.start-btn{
+    padding : 8px 35px;
+    margin-top : 16px;
+    border : none ;
+    background-color: var(--color-Dark-Desaturated-Blue);
+    color : var(--color-Light-Grayish-Blue) ;
+    border-radius: 16px;
+}
+/* styling the input[type=range] */
+input[type=range] {
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    width: 100%; /* Specific width is required for Firefox. */
+    background: var(--color-Grayish-Blue); /* Otherwise white in Chrome */
+  }
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    input[type=range] {
+        -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+        width: 100%; /* Specific width is required for Firefox. */
+        background:transparent; /* Otherwise white in Chrome */
+      }
+        /* Special styling for WebKit/Blink */
+    input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 22px;
+        width: 22px;
+        border-radius: 50%;
+        background: var(--color-Strong-Cyan);
+        background-image: url('../images/icon-slider.svg');
+        background-position: center;
+        background-size: 13px;
+        background-repeat: no-repeat;
+        box-shadow: 0px 12px 10px 6px var(--color-Soft-Cyan);
+        cursor: pointer;
+        margin-top: -8px;
+        /*You need to specify a margin in Chrome, but in Firefox and IE it is automatic  */
+    }
+    /* style the track */
+    input[type=range]::-webkit-slider-runnable-track {
+        /* width: 100%; */
+        height: 5px;
+        cursor: pointer;
+        border-radius: 7px;
+        /* background: var(--color-Strong-Cyan); */
+        /* color: var(--color-Light-Grayish-Blue2); */
+    }
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  }
+  
+  input[type=range]:focus {
+    outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+  }
+  
+  input[type=range]::-ms-track {
+    width: 100%;
+    cursor: pointer;
+  
+    /* Hides the slider so custom styles can be added */
+    background: transparent; 
+    border-color: transparent;
+    color: transparent;
+  }
+
+  
+  /* All the same stuff for Firefox */
+  input[type=range]::-moz-range-thumb {
+    -webkit-appearance: none;
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    background: var(--color-Strong-Cyan);
+    background-image: url('../images/icon-slider.svg');
+    background-position: center;
+    background-size: 14px;
+    background-repeat: no-repeat;
+    box-shadow: 0px 12px 10px 6px var(--color-Soft-Cyan);
+    cursor: pointer;
+  }
+  
+  /* All the same stuff for IE */
+  input[type=range]::-ms-thumb {
+    -webkit-appearance: none;
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    background: var(--color-Strong-Cyan);
+    background-image: url('../images/icon-slider.svg');
+    background-position: center;
+    background-size: 14px;
+    background-repeat: no-repeat;
+    box-shadow: 0px 12px 10px 6px var(--color-Soft-Cyan);
+    cursor: pointer;
+  }
+
+  
+  
+  /* input[type=range]:focus::-webkit-slider-runnable-track {
+    background: var(--color-Light-Grayish-Blue);
+  } */
+  input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    border-radius: 50px;
+    background: var(--color-Light-Grayish-Blue2);
+    border-radius: 1.3px;
+  }
+  
+  input[type=range]::-ms-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    border-radius: 50px;
+    background: var(--color-Light-Grayish-Blue2);
+    border-radius: 1.3px;
+  }
+ 
+  /* input[type=range]::-ms-fill-lower {
+    background: #2a6495;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+  input[type=range]:focus::-ms-fill-lower {
+    background: #3071a9;
+  }
+  input[type=range]::-ms-fill-upper {
+    background: #3071a9;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+  input[type=range]:focus::-ms-fill-upper {
+    background: #367ebd;
+  } */
+@media all and (min-width : 600px) {
+    .price-card__topPart {
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 1fr 1fr 1fr;
+        row-gap: 0em;
+    }
+    .price-card__topPart small{
+     grid-column-start: 1;   
+     grid-column-end: 2;   
+     grid-row-start : 1 ;
+     grid-row-end : 2 ;
+     margin-top: 1.2em;
+    }
+    
+    .price-card__topPart .price-card__topPart__progresser{
+        grid-column-start : 1 ;
+        grid-column-end : 3 ;
+        grid-row-start : 2 ;
+        grid-row-end : 3 ;
+    }
+    /* for progress */
+    .price-card__topPart .price-card__topPart__price{
+        grid-column-start : 2 ;
+        grid-column-end : 3 ;
+        grid-row-start : 1;
+        grid-row-end : 2 ;
+    }
+    .price-card__topPart .price-card__topPart__check{
+        grid-column-start : 1 ;
+        grid-column-end : 3 ;
+        grid-row-start : 3 ;
+        grid-row-end : 4 ;
+        padding-top: 1.4em;
+    }
+    .price-card__bottomPart{
+        flex-direction: row;
+        width : 100% ;
+        text-align: start;
+    }
+    .start-btn{
+        margin : auto 0px auto ;
+        margin: auto 0px auto auto;
+    }
+    .sm-discount{
+        display: none;
+    }
+    .lg-discount{
+        display: inline;
+    }
+    .price-card{
+        min-width: 450px;
+    }
+    .price-card__topPart__check{
+        padding : 0rem 0px;
+    }
+}
